@@ -14,12 +14,4 @@ public class UserDto {
     @Size(min = 9,max = 9, message = "Phone number is not valid")
     private String phone;
 
-    @NotEmpty
-    @Size(min = 9, max = 9, message = "Passport is not valid")
-    private String passport;
-
-    @NotEmpty
-    @Size(min = 14, max = 14, message = "Passport is not valid")
-    private String personalIdentificationNumber;
-
 }

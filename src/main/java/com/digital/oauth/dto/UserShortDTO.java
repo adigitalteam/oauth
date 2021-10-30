@@ -15,14 +15,6 @@ public class UserShortDTO {
 
     private String phone;
 
-    private String inn;
-
-    private String passport;
-
-    private String personalIdentificationNumber;
-
-    private FidoIdentityCustomerResponseRequestBodyDTO fidoGspIdentity;
-
     @JsonIgnore
     private String avatar;
 }

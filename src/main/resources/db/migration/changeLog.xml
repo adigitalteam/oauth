@@ -4,5 +4,11 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
-    <includeAll path="db/migration/logs" />
+    <include file="db/migration/logs/changelog-1.0.xml"/>
+    <include file="db/migration/logs/changelog-2.0.xml"/>
+    <include file="db/migration/logs/changelog-3.0.xml"/>
+    <include file="db/migration/logs/changelog-5.0.xml"/>
+    <include file="db/migration/logs/changelog-6.0.xml"/>
+    <include file="db/migration/logs/changelog-11.0.xml"/>
+    <include file="db/migration/logs/changelog-12.0.xml"/>
 </databaseChangeLog>

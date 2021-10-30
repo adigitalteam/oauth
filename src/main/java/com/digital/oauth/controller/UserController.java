@@ -81,16 +81,12 @@ public class UserController {
         me.setPhone(user.getPhone());
         me.setEmail(user.getEmail());
         me.setId(user.getId());
-        me.setFidoGspIdentity(user.getFidoGspIdentity());
-        me.setPersonalIdentificationNumber(user.getPersonalIdentificationNumber());
-        me.setPassport(user.getPassport());
         me.setAuthorities(authUserService.getUserRolesPermissions(user));
         me.setStatus(user.getStatus());
         me.setAvatarIconType(user.getAvatarIconType());
         if(user.getAvatar() != null){
             me.setAvatar(fileService.getAbsoluteUrl(user.getAvatar()));
         }
-        me.setInn(user.getInn());
         return me;
     }
 
