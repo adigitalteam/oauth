@@ -1,14 +1,11 @@
-FROM adigitalteam/springbootbase as builder
-RUN mkdir /application
+FROM maven:3-jdk-11
+ADD . /application
 WORKDIR /application
-COPY src src
-COPY pom.xml pom.xml
-COPY src/main/resources/application.heroku.yml src/main/resources/application.yml
-COPY ojdbc6-12.1.0.2.jar ojdbc6-12.1.0.2.jar
-RUN mvn install:install-file -DproxySet=true -Dfile=ojdbc6-12.1.0.2.jar -DgroupId=com.oracle  -DartifactId=oracle -Dversion=12.1.0.2 -Dpackaging=jar -DgeneratePom=true
-RUN mvn package -DproxySet=true
-
-FROM openjdk:11.0.7-jre
-COPY --from=builder /application/target/*.jar /app/lib/application.jar
+RUN mvn install:install-file -Dfile=ojdbc6-12.1.0.2.jar -DgroupId=com.oracle  -DartifactId=oracle -Dversion=12.1.0.2 -Dpackaging=jar -DgeneratePom=true
+RUN mvn package
+RUN mvn clean install
+FROM openjdk:11-jdk
+VOLUME /tmp
+COPY --from=0 /application/target/*.jar /app/lib/application.jar
 WORKDIR /app/lib
-ENTRYPOINT ["java", "-jar", "-Doracle.jdbc.timezoneAsRegion=false", "application.jar"]
+CMD ["java", "-jar", "-Doracle.jdbc.timezoneAsRegion=false", "application.jar"]
