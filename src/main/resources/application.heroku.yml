@@ -1,5 +1,5 @@
 server:
-  port: 80
+  port: ${SERVER_PORT}
 spring:
   servlet:
     multipart:
@@ -46,9 +46,9 @@ security:
   oauth2:
     resource:
       filter-order: 3
-  auth-server-url: https://digital-oauth.herokuapp.com/oauth/check_token
-  auth-server-url-me: https://digital-oauth.herokuapp.com/oauth/users/me
-  auth-server: https://digital-oauth.herokuapp.com
+  auth-server-url: ${AUTH_SERVER}/oauth/check_token
+  auth-server-url-me: ${AUTH_SERVER}/oauth/users/me
+  auth-server: ${AUTH_SERVER}
   auth-server-client-id: oauth
   auth-server-client-secret: oauth
 cdn:
