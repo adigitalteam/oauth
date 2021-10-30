@@ -1,0 +1,63 @@
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    initialization-mode: never
+  coredb:
+    url: jdbc:postgresql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}
+    jdbc-url: jdbc:postgresql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    configuration:
+      jdbc-url: jdbc:postgresql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}
+      username: ${DATABASE_USER}
+      password: ${DATABASE_PASSWORD}
+  seconddb:
+    url: jdbc:oracle:thin:@//localhost:1521/test
+    jdbc-url: jdbc:oracle:thin:@//localhost:1521/test
+    username: test
+    password: test
+    driver-class-name: oracle.jdbc.OracleDriver
+    configuration:
+      jdbc-url: jdbc:oracle:thin:@//localhost:1521/test
+      username: test
+      password: test
+      auto-commit: false
+  liquibase:
+    url: jdbc:postgresql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}
+    user: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+    change-log: classpath:db/migration/changeLog.xml
+    enabled: true
+security:
+  oauth2:
+    resource:
+      filter-order: 3
+  auth-server-url: https://digital-oauth.herokuapp.com/oauth/check_token
+  auth-server-url-me: https://digital-oauth.herokuapp.com/oauth/users/me
+  auth-server: https://digital-oauth.herokuapp.com
+  auth-server-client-id: oauth
+  auth-server-client-secret: oauth
+cdn:
+  servers:
+    1:
+      host: localhost
+      username: root
+      password: root
+      uploadPath: /static
+      publicPath: http://localhost
+      alias: 1
+  inRotation: [1]
+languages:
+  primaryLang: en
