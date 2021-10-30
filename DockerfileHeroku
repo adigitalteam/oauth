@@ -1,7 +1,7 @@
 FROM maven:3-jdk-11
 ADD . /application
 WORKDIR /application
-RUN mvn install:install-file -Dfile=ojdbc6-12.1.0.2.jar -DgroupId=com.oracle  -DartifactId=oracle -Dversion=12.1.0.2 -Dpackaging=jar -DgeneratePom=true
+RUN mvn install:install-file -Dfile=ojdbc6-12.1.0.2.jar -DgroupId=com.oracle  -DartifactId=oracle -Dversion=12.1.0.2 -Dpackaging=jar -DgeneratePom=true -Durl=file:./maven-repository/ -DrepositoryId=local-maven-repository
 RUN mvn package
 RUN mvn clean install
 FROM openjdk:11-jdk
