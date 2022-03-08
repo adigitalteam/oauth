@@ -11,7 +11,7 @@ services:
     env_file: .env
     restart: always
     ports:
-      - target: 8080
+      - target: ${DOMAIN_PORT}
         published: ${DOMAIN_PORT}
         protocol: tcp
         mode: host
@@ -23,7 +23,7 @@ services:
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=W7:P^GU-zd8w5N;{
+      - POSTGRES_PASSWORD=${PASSWORD1}
     restart: always
     ports:
       - target: 5432

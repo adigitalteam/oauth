@@ -24,9 +24,12 @@ jobs:
             username: root
             key: ${{ secrets.sshkey1 }}
             port: 22
-            script: | 
-                    cd /projects/oauth
-                    docker-compose -f docker-compose-dev.yml up -d --build
+            script: |
+              cd /projects/oauth
+              echo "
+                    PASSWORD1=${{ secrets.password1 }}
+                                                     " >> ".env"
+              docker-compose -f docker-compose-dev.yml up -d --build
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
