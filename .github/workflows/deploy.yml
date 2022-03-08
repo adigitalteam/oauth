@@ -17,3 +17,4 @@ jobs:
       - run: chmod 600 "$HOME/.ssh/sshkey1"
       # Deploy
       - run: rsync -e "ssh -p 22 -i $HOME/.ssh/sshkey1 -o StrictHostKeyChecking=no" --archive --compress . root@digitalteam.uz:/projects/oauth
+      - run: docker-compose -f /projects/oauth/docker-compose-dev.yml restart
