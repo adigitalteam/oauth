@@ -24,4 +24,6 @@ jobs:
             username: root
             key: ${{ secrets.sshkey1 }}
             port: 22
-            script: whoami
+            script: | 
+                    cd /projects/oauth
+                    docker-compose -f docker-compose-dev.yml restart
