@@ -11,7 +11,7 @@ services:
     env_file: .env
     restart: always
     ports:
-      - target: ${DOMAIN_PORT}
+      - target: ${SERVER_PORT}
         published: ${DOMAIN_PORT}
         protocol: tcp
         mode: host
